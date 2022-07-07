@@ -151,7 +151,7 @@ makeKnApiRequest('GET', 51, 92, '/62b04d43dc757407519f1eea', '').then(projects =
 
             testseries[0].data.sort(compare);
             createGantt(testseries);
-            const url = document.querySelector('iframe')
+            const url = document.getElementById("test").contentWindow.location.href;
             console.log(url);
             // .contentWindow.location.href;
         })
