@@ -151,6 +151,9 @@ makeKnApiRequest('GET', 51, 92, '/62b04d43dc757407519f1eea', '').then(projects =
 
             testseries[0].data.sort(compare);
             createGantt(testseries);
+            const url = document.querySelector('iframe')
+            console.log(url);
+            // .contentWindow.location.href;
         })
     })
 })
@@ -278,6 +281,3 @@ function makeKnApiRequest(type, scene, view, id, data) {
 }
 
 
-const url = document.querySelector('iframe')
-console.log(url);
-// .contentWindow.location.href;
