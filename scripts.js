@@ -1,4 +1,5 @@
-
+const url = document.querySelector('iframe').contentWindow.location.href;
+console.log(url);
 makeKnApiRequest('GET', 51, 92, '/62b04d43dc757407519f1eea', '').then(projects => {
     makeKnApiRequest('GET', 51, 93, '?rows_per_page=1000', '').then(milestones => {
         makeKnApiRequest('GET', 51, 94, '?rows_per_page=1000', '').then(tasks => {
