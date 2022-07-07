@@ -151,7 +151,9 @@ makeKnApiRequest('GET', 51, 92, '/62b04d43dc757407519f1eea', '').then(projects =
 
             testseries[0].data.sort(compare);
             createGantt(testseries);
-            const url = window.location.href;
+            var url = (window.location != window.parent.location)
+                ? document.referrer
+                : document.location.href;
             console.log(url);
             // .contentWindow.location.href;
         })
