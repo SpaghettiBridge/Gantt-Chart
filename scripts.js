@@ -257,7 +257,7 @@ function createGantt(data) {
 }
 
 sendWebhookData().then(result => {
-    console.log(result);
+    console.log(JSON.stringify(result));
 })
 
 
@@ -292,7 +292,7 @@ function sendWebhookData() {
         $.ajax({
             url: 'https://hook.integromat.com/ucj3s2a4ryghge2o3v9utlq81tudedp9',
             type: 'POST',
-            data: "/62b04d43dc757407519f1ee6",
+            data: "62b04d43dc757407519f1ee6",
             success: function (response) {
                 resolve(response);
             },
