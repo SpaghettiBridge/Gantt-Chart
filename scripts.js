@@ -256,6 +256,10 @@ function createGantt(data) {
     });
 }
 
+sendWebhookData().then(result => {
+    console.log(result);
+})
+
 
 function makeKnApiRequest(type, scene, view, id, data) {
     return new Promise((resolve, reject) => {
@@ -282,4 +286,21 @@ function makeKnApiRequest(type, scene, view, id, data) {
     });
 }
 
+
+function sendWebhookData() {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: 'https://hook.integromat.com/ucj3s2a4ryghge2o3v9utlq81tudedp9',
+            type: 'POST',
+            data: "/62b04d43dc757407519f1ee6",
+            success: function (response) {
+                resolve(response);
+            },
+            error: function (error) {
+                reject(error);
+            },
+        });
+    });
+
+}
 
