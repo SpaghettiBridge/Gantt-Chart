@@ -1,4 +1,10 @@
+const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+});
+// Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
+let value = params.key; // "some_value"
 
+console.log(value);
 makeKnApiRequest('GET', 51, 92, '/62b04d43dc757407519f1ee6', '').then(projects => {
     makeKnApiRequest('GET', 51, 93, '?rows_per_page=1000', '').then(milestones => {
         makeKnApiRequest('GET', 51, 94, '?rows_per_page=1000', '').then(tasks => {
