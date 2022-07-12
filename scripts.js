@@ -257,7 +257,7 @@ function createGantt(data) {
 }
 
 sendWebhookData().then(result => {
-    console.log(JSON.stringify(result));
+    console.log(JSON.parse(result));
 })
 
 
