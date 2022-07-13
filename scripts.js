@@ -5,6 +5,9 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 let value = params.key; // "some_value"
 
 console.log(value);
+sendWebhookData(value).then(result => {
+    console.log(JSON.parse(result));
+})
 makeKnApiRequest('GET', 51, 92, '/62b04d43dc757407519f1ee6', '').then(projects => {
     makeKnApiRequest('GET', 51, 93, '?rows_per_page=1000', '').then(milestones => {
         makeKnApiRequest('GET', 51, 94, '?rows_per_page=1000', '').then(tasks => {
@@ -262,9 +265,7 @@ function createGantt(data) {
     });
 }
 
-sendWebhookData().then(result => {
-    console.log(JSON.parse(result));
-})
+
 
 
 function makeKnApiRequest(type, scene, view, id, data) {
@@ -293,10 +294,10 @@ function makeKnApiRequest(type, scene, view, id, data) {
 }
 
 
-function sendWebhookData() {
+function sendWebhookData(project) {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: 'https://hook.integromat.com/ucj3s2a4ryghge2o3v9utlq81tudedp9',
+            url: 'https://hook.integromat.com/' + project,
             type: 'POST',
             data: "62b04d43dc757407519f1ee6",
             success: function (response) {
