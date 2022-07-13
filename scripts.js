@@ -188,7 +188,7 @@ function sendWebhookData(project) {
         $.ajax({
             url: 'https://hook.integromat.com/ucj3s2a4ryghge2o3v9utlq81tudedp9',
             type: 'POST',
-            data: { project: "62b04d43dc757407519f1ee6" },
+            data: { project: project },
             success: function (response) {
                 resolve(response);
             },
