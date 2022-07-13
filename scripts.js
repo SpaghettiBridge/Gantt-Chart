@@ -6,168 +6,52 @@ let value = params.key; // "some_value"
 
 console.log(value);
 sendWebhookData(value).then(result => {
-    console.log(JSON.parse(result));
-})
-makeKnApiRequest('GET', 51, 92, '/62b04d43dc757407519f1ee6', '').then(projects => {
-    makeKnApiRequest('GET', 51, 93, '?rows_per_page=1000', '').then(milestones => {
-        makeKnApiRequest('GET', 51, 94, '?rows_per_page=1000', '').then(tasks => {
-            console.log(projects);
-            // console.log(milestones.records);
-            console.log(tasks.records);
-            var testseries = [];
-            //'/62b04d43dc757407519f1eea'
+    data = JSON.parse(result)
+    console.log(data);
+    var testseries2 = [];
+    var projectdata2 = {
+        name: data[0].field_9,
+        data: [{
+            name: data[0].field_9,
+            id: data[0].id,
+            Owner: data[0].field_34_raw[0].identifier
+        }]
+    };
+    testseries2.push(projectdata2);
 
-            // var oldestDate = new Date("2222-12-30");
-            // var newestDate = new Date("1000-01-01");
-
-
-
-            // projects.records.forEach(proj => {
-            var projectdata = {
-                name: projects.field_9,
-                data: [{
-                    name: projects.field_9,
-                    id: projects.id,
-                    Owner: projects.field_34_raw[0].identifier
-
-                }]
-            };
-            // var projectdata = {
-            //     name: "",
-            //     data: [{
-            //         name: "",
-            //         id: "",
-            //         Owner: ""
-
-            //     }]
-            // };
-
-            // if (proj.field_77_raw) {
-            //     let [month, day, year] = proj.field_77_raw.date.split('/');
-            //     let dateToCheck = new Date(+year, month - 1, +day);
-
-            //     if (dateToCheck < oldestDate) {
-            //         oldestDate = dateToCheck;
-            //     }
-            //     if (dateToCheck > newestDate) {
-            //         newestDate = dateToCheck;
-            //     }
-            // }
-
-            // projectdata.name = proj.field_9;
-            // projectdata.data[0].name = proj.field_9;
-            // projectdata.data[0].Owner = proj.field_34_raw[0].identifier;
-            // projectdata.data[0].id = proj.id;
-            testseries.push(projectdata);
-            // console.log(projObj);
-            // });
-            milestones.records.forEach(stone => {
-                var milestoneData = {
-                    name: "",
-                    dependency: '',
-                    id: "",
-                    parent: "",
-                    start: "",
-                    milestone: true,
-                    owner: ""
-                };
-                // if (stone.field_58_raw.date) {
-                //     let [month, day, year] = stone.field_58_raw.date;
-                //     let dateToCheck = new Date(+year, month - 1, +day);
-
-                //     if (dateToCheck < oldestDate) {
-                //         oldestDate = dateToCheck;
-                //     }
-                //     if (dateToCheck > newestDate) {
-                //         newestDate = dateToCheck;
-                //     }
-                // }
-
-                // console.log(milestoneData);
-                milestoneData.name = stone.field_40;
-                milestoneData.id = stone.id;
-                milestoneData.parent = stone.field_62_raw[0].id;
-                milestoneData.start = Math.floor(new Date(stone.field_58_raw.date).getTime());
-                // milestoneData.end = new Date(stone.field_58_raw.date);
-                milestoneData.owner = stone["field_62.field_34_raw"][0].identifier
-                testseries.forEach(projec => {
-                    if (stone.field_62_raw[0].identifier == projec.name) {
-                        projec.data.push(milestoneData);
-                    }
-                });
-            })
-            tasks.records.forEach(tas => {
-                var taskData = {
-                    name: '',
-                    id: '',
-                    parent: '',
-                    start: "",
-                    end: "",
-                    // milestone: true,
-                    owner: ''
-                };
-
-                // console.log(taskData);
-                taskData.name = tas.field_36;
-                taskData.id = tas.id;
-                taskData.parent = tas.field_66_raw[0].id;
-                taskData.start = Math.floor(new Date(tas.field_99_raw.date).getTime());
-                taskData.end = Math.floor(new Date(tas.field_100_raw.date).getTime());
-                if (taskData.end == taskData.start) {
-                    taskData.end = taskData.end + tas.field_75_raw;
-                }
-                // console.log(taskData.start);
-                // console.log(taskData.end);
-
-                // let [month, day, year] = tas.field_99_raw.date;
-                // let dateToCheck = new Date(+year, month - 1, +day);
-
-                // if (dateToCheck < oldestDate) {
-                //     oldestDate = dateToCheck;
-                // }
-                // if (dateToCheck > newestDate) {
-                //     newestDate = dateToCheck;
-                // }
-
-                if (tas["field_70.field_72_raw"]) {
-                    taskData.owner = tas["field_70.field_72_raw"][0][0].identifier;
-                } else {
-                    taskData.owner = "John Smith";
-                }
-
-                // taskData.dependency = tas.field_65_raw[0].id;
-                testseries.forEach(projec => {
-                    if (tas.field_66_raw[0].identifier == projec.name) {
-                        projec.data.push(taskData);
-                    }
-
-                });
-                // console.log(taskData)
-            })
-            // console.log(oldestDate);
-            // console.log(newestDate)
-            console.log(testseries)
-
-            function compare(a, b) {
-                if (a.start < b.start) {
-                    return -1;
-                }
-                if (a.start > b.start) {
-                    return 1;
-                }
-                return 0;
+    data[0].Milestones.forEach(stone => {
+        testseries2.forEach(projec => {
+            console.log(stone.parent);
+            console.log(projec.data[0].id);
+            if (stone.parent == projec.data[0].id) {
+                projec.data.push(stone);
             }
-
-            testseries[0].data.sort(compare);
-            createGantt(testseries);
-            var url = (window.location != window.parent.location)
-                ? document.referrer
-                : document.location.href;
-            console.log(url);
-            // .contentWindow.location.href;
-        })
+        });
     })
+    data[0].Tasks.forEach(task => {
+        testseries2.forEach(projec => {
+            console.log(task);
+            console.log(projec);
+            if (task.parent == projec.data[0].id) {
+                projec.data.push(task);
+            }
+        });
+    })
+    console.log(testseries2)
+    function compare(a, b) {
+        if (a.start < b.start) {
+            return -1;
+        }
+        if (a.start > b.start) {
+            return 1;
+        }
+        return 0;
+    }
+
+    testseries2[0].data.sort(compare);
+    createGantt(testseries2);
 })
+
 function createGantt(data) {
     var
         dateFormat = Highcharts.dateFormat,
@@ -176,6 +60,13 @@ function createGantt(data) {
 
     Highcharts.ganttChart("uniqueID", {
         series: data,
+        exporting: {
+            buttons: {
+                contextButton: {
+                    menuItems: ["printChart", "separator", "downloadPNG", "downloadJPEG", "downloadPDF", "downloadSVG"]
+                }
+            }
+        },
         tooltip: {
             pointFormatter: function () {
                 var point = this,
@@ -221,9 +112,7 @@ function createGantt(data) {
                 }, '');
             }
         },
-        title: {
-            text: 'Gantt Project Management Using Knack Data'
-        },
+
         xAxis: {
             currentDateIndicator: true,
             // min: new Date(oldDate),
@@ -299,7 +188,7 @@ function sendWebhookData(project) {
         $.ajax({
             url: 'https://hook.integromat.com/ucj3s2a4ryghge2o3v9utlq81tudedp9',
             type: 'POST',
-            data: project,
+            data: { project: "62b04d43dc757407519f1ee6" },
             success: function (response) {
                 resolve(response);
             },
