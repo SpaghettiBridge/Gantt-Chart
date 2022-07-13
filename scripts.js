@@ -37,7 +37,7 @@ sendWebhookData(value).then(result => {
             }
         });
     })
-    // console.log(testseries2)
+    console.log(testseries2)
     function compare(a, b) {
         if (a.start < b.start) {
             return -1;
