@@ -297,9 +297,9 @@ function makeKnApiRequest(type, scene, view, id, data) {
 function sendWebhookData(project) {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: 'https://hook.integromat.com/' + project,
+            url: 'https://hook.integromat.com/ucj3s2a4ryghge2o3v9utlq81tudedp9',
             type: 'POST',
-            data: "62b04d43dc757407519f1ee6",
+            data: project,
             success: function (response) {
                 resolve(response);
             },
