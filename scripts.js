@@ -7,7 +7,7 @@ let value = params.key; // "some_value"
 console.log(value);
 sendWebhookData(value).then(result => {
     data = JSON.parse(result)
-    console.log(data);
+    // console.log(data);
     var testseries2 = [];
     var projectdata2 = {
         name: data[0].field_9,
@@ -21,8 +21,8 @@ sendWebhookData(value).then(result => {
 
     data[0].Milestones.forEach(stone => {
         testseries2.forEach(projec => {
-            console.log(stone.parent);
-            console.log(projec.data[0].id);
+            // console.log(stone.parent);
+            // console.log(projec.data[0].id);
             if (stone.parent == projec.data[0].id) {
                 projec.data.push(stone);
             }
@@ -30,14 +30,14 @@ sendWebhookData(value).then(result => {
     })
     data[0].Tasks.forEach(task => {
         testseries2.forEach(projec => {
-            console.log(task);
-            console.log(projec);
+            // console.log(task);
+            // console.log(projec);
             if (task.parent == projec.data[0].id) {
                 projec.data.push(task);
             }
         });
     })
-    console.log(testseries2)
+    // console.log(testseries2)
     function compare(a, b) {
         if (a.start < b.start) {
             return -1;
