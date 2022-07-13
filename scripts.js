@@ -156,33 +156,6 @@ function createGantt(data) {
 
 
 
-
-function makeKnApiRequest(type, scene, view, id, data) {
-    return new Promise((resolve, reject) => {
-
-        var headers = {
-            'X-Knack-REST-API-Key': '3314e180-dda5-48ba-9c84-852a40f60585',
-            'X-Knack-Application-Id': "62b04d390d7746001eeb95fd",
-            'Content-Type': 'application/json'
-        };
-        $.ajax({
-            url: 'https://api.knack.com/v1/pages/scene_' + scene + '/views/view_' + view + '/records' + id,
-            type: type,
-            headers: headers,
-            data: JSON.stringify(data),
-
-
-            success: function (response) {
-                resolve(response);
-            },
-            error: function (error) {
-                reject(error);
-            }
-        });
-    });
-}
-
-
 function sendWebhookData(project) {
     return new Promise((resolve, reject) => {
         $.ajax({
