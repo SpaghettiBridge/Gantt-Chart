@@ -4,11 +4,10 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 // Get the value of "some_key" in eg "https://example.com/?some_key=some_value"
 let value = params.key; // "some_value"
 let app = params.app;
-let test = params;
+
 console.log(app);
-console.log(test);
 console.log(value);
-sendWebhookData(value).then(result => {
+sendWebhookData(value, app).then(result => {
     data = JSON.parse(result)
     // console.log(data);
     var testseries2 = [];
@@ -159,12 +158,15 @@ function createGantt(data) {
 
 
 
-function sendWebhookData(project) {
+function sendWebhookData(project, app) {
     return new Promise((resolve, reject) => {
         $.ajax({
             url: 'https://hook.integromat.com/ucj3s2a4ryghge2o3v9utlq81tudedp9',
             type: 'POST',
-            data: { project: project },
+            data: {
+                project: project,
+                app: app
+            },
             success: function (response) {
                 resolve(response);
             },
