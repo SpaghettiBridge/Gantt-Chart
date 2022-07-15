@@ -35,7 +35,7 @@ sendWebhookData(value, app).then(result => {
         testseries2.data.forEach(projec => {
             // console.log(task);
             // console.log(projec);
-            if (task.parent == projec.data[0].id) {
+            if (task.parent == projec.id) {
                 projec.data.push(task);
             }
         });
