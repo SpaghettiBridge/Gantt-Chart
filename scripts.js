@@ -36,7 +36,7 @@ sendWebhookData(value, app).then(result => {
             console.log(task);
             console.log(projec);
             if (task.parent == projec.id) {
-                projec.data.push(task);
+                projec.push(task);
             }
         });
     })
