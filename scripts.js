@@ -30,11 +30,11 @@ sendWebhookData(value, app).then(result => {
             }
         });
     })
-    console.log(testseries2);
+
     data[0].Tasks.forEach(task => {
         testseries2[0].data.push(task);
     })
-    console.log(testseries2)
+
     function compare(a, b) {
         if (a.start < b.start) {
             return -1;
