@@ -30,6 +30,7 @@ sendWebhookData(value, app).then(result => {
             }
         });
     })
+    console.log(testseries2);
     data[0].Tasks.forEach(task => {
         testseries2.forEach(projec => {
             // console.log(task);
