@@ -2,7 +2,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
 });
 
-let value = params.key; "
+let value = params.key;
 let app = params.app;
 
 console.log(app);
