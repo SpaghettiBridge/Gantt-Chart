@@ -23,8 +23,7 @@ sendWebhookData(value, app).then(result => {
 
     data[0].Milestones.forEach(stone => {
         testseries2.forEach(projec => {
-            // console.log(stone.parent);
-            // console.log(projec.data[0].id);
+
             if (stone.parent == projec.data[0].id) {
                 projec.data.push(stone);
             }
