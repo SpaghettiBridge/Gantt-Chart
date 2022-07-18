@@ -43,7 +43,7 @@ sendWebhookData(value, app).then(result => {
         }
         return 0;
     }
-
+    console.log(testseries2);
     testseries2[0].data.sort(compare);
     createGantt(testseries2);
 })
