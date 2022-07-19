@@ -4,7 +4,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 let value = params.key;
 let app = params.app;
-var j = 0;
+
 
 
 console.log(app);
@@ -67,7 +67,7 @@ function createGantt(data, j) {
                 printButton: {
                     text: 'Active',
                     onclick: function () {
-
+                        var j = 0;
                         console.log(chart);
                         let input = "active",
                             points = chart.series[0].points,
