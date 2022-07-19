@@ -175,7 +175,7 @@ function filterFunction() {
     }
 }
 let i = document.getElementById('myInput');
-i.addEventListener("click", filterFunction);
+i.onclick = function () { filterFunction };;
 
 function sendWebhookData(project, app) {
     return new Promise((resolve, reject) => {
