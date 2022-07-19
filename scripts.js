@@ -64,8 +64,30 @@ function createGantt(data) {
                 printButton: {
                     text: 'Test',
                     onclick: function () {
-                        alert("button pushed!");
-                        console.log(this.series[0].data)
+
+                        let input = 'Active',
+                            points = chart.series[1].points,
+                            filteredPoint = points.filter(point => point.category == input.value);
+
+                        if (filteredPoint.length) {
+                            let newData = [];
+                            for (let i in data) {
+                                newData.push(null)
+                            }
+
+                            newData[filteredPoint[0].index] = filteredPoint[0].y
+                            newData.push(null) //--- extra null as a workaround for bug
+
+                            chart.series[0].update({
+                                data: newData
+                            })
+                        } else {
+                            chart.series[0].update({
+                                data: data
+                            })
+                        }
+
+                        // console.log(this.series[0].data)
                     }
                 }
             }
