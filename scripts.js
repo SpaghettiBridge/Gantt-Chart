@@ -54,41 +54,13 @@ function createGantt(data) {
         defined = Highcharts.defined,
         isObject = Highcharts.isObject;
 
-    Highcharts.ganttChart("uniqueID", {
+    let chart = Highcharts.ganttChart("uniqueID", {
         series: data,
         exporting: {
             buttons: {
                 contextButton: {
                     menuItems: ["printChart", "separator", "downloadPNG", "downloadJPEG", "downloadPDF", "downloadSVG"]
                 },
-                printButton: {
-                    text: 'Test',
-                    onclick: function () {
-                        let input = 'Active',
-                            points = this.series[0].data,
-                            filteredPoint = points.filter(point => point.Status == input.value);
-
-                        if (filteredPoint.length) {
-                            let newData = [];
-                            for (let i in data) {
-                                newData.push(null)
-                            }
-
-                            newData[filteredPoint[0].index] = filteredPoint[0].y
-                            newData.push(null) //--- extra null as a workaround for bug
-
-                            this.series[0].update({
-                                data: newData
-                            })
-                        } else {
-                            this.series[0].update({
-                                data: data
-                            })
-                        }
-
-                        console.log(this.series[0].data)
-                    }
-                }
             }
         },
         tooltip: {
@@ -178,6 +150,30 @@ function createGantt(data) {
     });
 }
 
+function filterFunction() {
+    console.log(document.getElementById('myInput').value)
+    let input = document.getElementById('myInput'),
+        points = chart.series[1].points,
+        filteredPoint = points.filter(point => point.category == input.value);
+
+    if (filteredPoint.length) {
+        let newData = [];
+        for (let i in data) {
+            newData.push(null)
+        }
+
+        newData[filteredPoint[0].index] = filteredPoint[0].y
+        newData.push(null) //--- extra null as a workaround for bug
+
+        chart.series[0].update({
+            data: newData
+        })
+    } else {
+        chart.series[0].update({
+            data: data
+        })
+    }
+}
 
 
 function sendWebhookData(project, app) {
