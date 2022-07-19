@@ -67,7 +67,7 @@ function createGantt(data) {
                     onclick: function () {
                         console.log(chart);
                         let input = "Active",
-                            points = chart.series[1].points,
+                            points = chart.series[0].points,
                             filteredPoint = points.filter(point => point.category == input);
                         if (j == 0) {
                             if (filteredPoint.length) {
@@ -206,8 +206,7 @@ function filterFunction() {
         })
     }
 }
-let i = document.getElementById('myInput');
-i.onclick = function () { filterFunction };;
+
 
 function sendWebhookData(project, app) {
     return new Promise((resolve, reject) => {
