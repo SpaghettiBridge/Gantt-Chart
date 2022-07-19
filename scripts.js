@@ -84,8 +84,8 @@ function createGantt(data) {
                     title: 'End',
                     value: dateFormat(format, point.end)
                 }, {
-                    title: 'Completed',
-                    value: status
+                    title: 'Status',
+                    value: point.Status
                 }, {
                     title: 'Owner',
                     value: options.owner || 'unassigned'
