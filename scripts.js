@@ -80,8 +80,8 @@ function createGantt(data, j) {
                                     newData.push(null)
                                 }
 
-                                newData[filteredPoint[0].index] = filteredPoint[0].y
-                                newData.push(null) //--- extra null as a workaround for bug
+                                // newData[filteredPoint[0].index] = filteredPoint[0].y
+                                // newData.push(null) //--- extra null as a workaround for bug
 
                                 chart.series[0].update({
                                     data: newData
