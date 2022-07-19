@@ -64,10 +64,9 @@ function createGantt(data) {
                 printButton: {
                     text: 'Test',
                     onclick: function () {
-
                         let input = 'Active',
-                            points = chart.series[1].points,
-                            filteredPoint = points.filter(point => point.category == input.value);
+                            points = this.series[0].data,
+                            filteredPoint = points.filter(point => point.Status == input.value);
 
                         if (filteredPoint.length) {
                             let newData = [];
@@ -87,7 +86,7 @@ function createGantt(data) {
                             })
                         }
 
-                        // console.log(this.series[0].data)
+                        console.log(this.series[0].data)
                     }
                 }
             }
