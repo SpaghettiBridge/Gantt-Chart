@@ -71,6 +71,7 @@ function createGantt(data) {
                             filteredPoint = points.filter(point => point.category == input);
                         if (j == 0) {
                             if (filteredPoint.length) {
+                                console.log("filtering by active");
                                 let newData = [];
                                 for (let i in data) {
                                     newData.push(null)
@@ -86,6 +87,7 @@ function createGantt(data) {
                             }
 
                         } else if (j = 1) {
+                            console.log("Reset to all tasks");
                             chart.series[0].update({
                                 data: data
                             })
