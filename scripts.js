@@ -77,11 +77,11 @@ function createGantt(data) {
                             newData[filteredPoint[0].index] = filteredPoint[0].y
                             newData.push(null) //--- extra null as a workaround for bug
 
-                            chart.series[0].update({
+                            this.series[0].update({
                                 data: newData
                             })
                         } else {
-                            chart.series[0].update({
+                            this.series[0].update({
                                 data: data
                             })
                         }
