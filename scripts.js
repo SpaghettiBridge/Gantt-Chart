@@ -56,6 +56,7 @@ function createGantt(data) {
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
         isObject = Highcharts.isObject;
+    var j = 0;
 
     let chart = Highcharts.ganttChart("uniqueID", {
         series: data,
@@ -67,7 +68,7 @@ function createGantt(data) {
                 printButton: {
                     text: 'Active',
                     onclick: function () {
-                        var j = 0;
+
                         console.log(chart);
                         let input = "active",
                             points = chart.series[0].points,
