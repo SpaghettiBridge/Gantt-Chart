@@ -60,6 +60,13 @@ function createGantt(data) {
             buttons: {
                 contextButton: {
                     menuItems: ["printChart", "separator", "downloadPNG", "downloadJPEG", "downloadPDF", "downloadSVG"]
+                },
+                printButton: {
+                    text: 'Test',
+                    onclick: function () {
+                        alert("button pushed!");
+                        console.log(this)
+                    }
                 }
             }
         },
