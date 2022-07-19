@@ -49,7 +49,7 @@ sendWebhookData(value, app).then(result => {
     createGantt(testseries2);
 })
 
-function createGantt(data) {
+function createGantt(data, j) {
     var
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
