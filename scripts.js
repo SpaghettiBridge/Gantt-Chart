@@ -75,16 +75,10 @@ function createGantt(data, j) {
                         if (j == 0) {
                             if (filteredPoint.length) {
                                 console.log("filtering by active");
-                                let newData = [];
-                                for (let i in data) {
-                                    newData.push(null)
-                                }
-
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
                                 // newData.push(null) //--- extra null as a workaround for bug
-
                                 chart.series[0].update({
-                                    data: newData
+                                    data: filteredPoint
                                 })
                                 j = 1;
                             }
