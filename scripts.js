@@ -65,7 +65,7 @@ function createGantt(data) {
                     text: 'Test',
                     onclick: function () {
                         alert("button pushed!");
-                        console.log(this)
+                        console.log(this.series[0].data)
                     }
                 }
             }
