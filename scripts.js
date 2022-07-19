@@ -4,6 +4,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 let value = params.key;
 let app = params.app;
+let j = 0;
 
 console.log(app);
 console.log(value);
@@ -61,6 +62,36 @@ function createGantt(data) {
                 contextButton: {
                     menuItems: ["printChart", "separator", "downloadPNG", "downloadJPEG", "downloadPDF", "downloadSVG"]
                 },
+                printButton: {
+                    text: 'Active',
+                    onclick: function () {
+                        let input = "Active",
+                            points = chart.series[1].points,
+                            filteredPoint = points.filter(point => point.category == input);
+                        if (j == 0) {
+                            if (filteredPoint.length) {
+                                let newData = [];
+                                for (let i in data) {
+                                    newData.push(null)
+                                }
+
+                                newData[filteredPoint[0].index] = filteredPoint[0].y
+                                newData.push(null) //--- extra null as a workaround for bug
+
+                                chart.series[0].update({
+                                    data: newData
+                                })
+                                j = 1;
+                            }
+
+                        } else if (j = 1) {
+                            chart.series[0].update({
+                                data: data
+                            })
+                            j = 0;
+                        }
+                    }
+                }
             }
         },
         tooltip: {
