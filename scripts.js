@@ -4,6 +4,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 let value = params.key;
 let app = params.app;
+var j = 0;
 
 
 console.log(app);
@@ -49,7 +50,7 @@ sendWebhookData(value, app).then(result => {
     createGantt(testseries2);
 })
 
-function createGantt(data) {
+function createGantt(data, j) {
     var
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
@@ -65,7 +66,7 @@ function createGantt(data) {
                 printButton: {
                     text: 'Active',
                     onclick: function () {
-                        var j = 0;
+
                         console.log(chart);
                         let input = "Active",
                             points = chart.series[0].points,
@@ -87,7 +88,7 @@ function createGantt(data) {
                                 j = 1;
                             }
 
-                        } else if (j = 1) {
+                        } else if (j == 1) {
                             console.log("Reset to all tasks");
                             chart.series[0].update({
                                 data: data
