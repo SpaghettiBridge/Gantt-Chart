@@ -4,13 +4,13 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 let value = params.key;
 let app = params.app;
-
+var j = 0;
 
 
 console.log(app);
 console.log(value);
 sendWebhookData(value, app).then(result => {
-    var j = 0;
+
     data = JSON.parse(result)
     // console.log(data);
     var testseries2 = [];
