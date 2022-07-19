@@ -65,6 +65,7 @@ function createGantt(data) {
                 printButton: {
                     text: 'Active',
                     onclick: function () {
+                        console.log(chart);
                         let input = "Active",
                             points = chart.series[1].points,
                             filteredPoint = points.filter(point => point.category == input);
