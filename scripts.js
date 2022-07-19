@@ -4,7 +4,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 let value = params.key;
 let app = params.app;
-var j = 0;
+
 
 console.log(app);
 console.log(value);
@@ -49,8 +49,9 @@ sendWebhookData(value, app).then(result => {
     createGantt(testseries2);
 })
 
-function createGantt(data, j) {
+function createGantt(data) {
     var
+        j = 0,
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
         isObject = Highcharts.isObject;
