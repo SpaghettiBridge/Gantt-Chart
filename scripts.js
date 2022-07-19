@@ -48,10 +48,10 @@ sendWebhookData(value, app).then(result => {
     }
     console.log(testseries2);
     testseries2[0].data.sort(compare);
-    createGantt(testseries2, j);
+    createGantt(testseries2);
 })
 
-function createGantt(data, j) {
+function createGantt(data) {
     var
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
