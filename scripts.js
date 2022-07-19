@@ -51,7 +51,6 @@ sendWebhookData(value, app).then(result => {
 
 function createGantt(data) {
     var
-        j = 0,
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
         isObject = Highcharts.isObject;
@@ -66,6 +65,7 @@ function createGantt(data) {
                 printButton: {
                     text: 'Active',
                     onclick: function () {
+                        var j = 0;
                         console.log(chart);
                         let input = "Active",
                             points = chart.series[0].points,
