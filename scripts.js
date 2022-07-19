@@ -74,21 +74,21 @@ function createGantt(data) {
                             points = chart.series[0].points,
                             filteredPoint = points.filter(point => point.Status == input);
                         if (j == 0) {
-                            // if (filteredPoint.length) {
-                            console.log("filtering by active");
-                            // newData[filteredPoint[0].index] = filteredPoint[0].y
-                            // newData.push(null) //--- extra null as a workaround for bug
-                            // chart.series[0].update({
-                            //     data: filteredPoint
-                            // })
-                            j = 1;
-                            // }
+                            if (filteredPoint.length) {
+                                console.log("filtering by active");
+                                newData[filteredPoint[0].index] = filteredPoint[0].y
+                                newData.push(null) //--- extra null as a workaround for bug
+                                chart.series[0].update({
+                                    data: filteredPoint
+                                })
+                                j = 1;
+                            }
 
                         } else if (j == 1) {
                             console.log("Reset to all tasks");
-                            // chart.series[0].update({
-                            //     data: data
-                            // })
+                            chart.series[0].update({
+                                data: data
+                            })
                             j = 0;
                         }
                     }
