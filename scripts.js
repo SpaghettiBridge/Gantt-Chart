@@ -4,7 +4,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 
 let value = params.key;
 let app = params.app;
-let j = 0;
+var j = 0;
 
 console.log(app);
 console.log(value);
