@@ -9,7 +9,7 @@ let app = params.app;
 
 console.log(app);
 console.log(value);
-sendWebhookData(value, app).then(result => {
+var d = sendWebhookData(value, app).then(result => {
 
     data = JSON.parse(result)
     // console.log(data);
@@ -49,9 +49,10 @@ sendWebhookData(value, app).then(result => {
     console.log(testseries2);
     testseries2[0].data.sort(compare);
     createGantt(testseries2);
+    return testseries2;
 })
 
-function createGantt(data) {
+function createGantt(data, d) {
     var
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
@@ -72,23 +73,24 @@ function createGantt(data) {
                         console.log(chart);
                         let input = "active",
                             points = chart.series[0].points,
-                            filteredPoint = points.filter(point => point.Status == input);
+                            filteredPoint = points.filter(point => point.Status !== input);
                         if (j == 0) {
                             if (filteredPoint.length) {
                                 console.log("filtering by active");
+                                filteredPoint.forEach(task => {
+                                    console.log(task);
+                                    chart.get(task.id).remove();
+                                })
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
                                 // newData.push(null) //--- extra null as a workaround for bug
-                                chart.series[0].update({
-                                    data: filteredPoint
-                                })
                                 j = 1;
                             }
 
                         } else if (j == 1) {
                             console.log("Reset to all tasks");
-                            chart.series[0].update({
-                                data: data
-                            })
+                            // chart.series[0].update({
+                            //     data: data
+                            // })
                             j = 0;
                         }
                     }
