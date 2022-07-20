@@ -192,10 +192,11 @@ function createGantt(data, d) {
             }
         }
     });
+    removeById.addEventListener("click", function () {
+        chart.get(chart.series[0].data[0]).remove();
+    })
 }
-removeById.addEventListener("click", function () {
-    chart.get(chart.series[0].data[0]).remove();
-})
+
 function filterFunction() {
     console.log(document.getElementById('myInput').value)
     let input = document.getElementById('myInput'),
