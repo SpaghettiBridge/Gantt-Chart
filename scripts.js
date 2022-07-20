@@ -79,7 +79,7 @@ function createGantt(data, d) {
                                 console.log("filtering by active");
                                 if (filteredPoint.length > 1) {
                                     filteredPoint.forEach(task => {
-                                        console.log(task);
+                                        console.log(chart.get(task.id));
                                         chart.get(task.id).remove();
                                     })
                                 }
