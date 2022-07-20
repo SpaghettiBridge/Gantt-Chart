@@ -193,7 +193,7 @@ function createGantt(data, d) {
         }
     });
     removeById.addEventListener("click", function () {
-        chart.get(chart.series[0].data[0]).remove();
+        chart.get(chart.series[0].data[0].id).remove();
     })
 }
 
