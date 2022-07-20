@@ -7,7 +7,9 @@ console.log(select);
 console.log(removeById);
 let value = params.key;
 let app = params.app;
-
+removeById.addEventListener("click", function () {
+    chart.get(chart.series[0].data[0]).remove();
+})
 
 
 console.log(app);
