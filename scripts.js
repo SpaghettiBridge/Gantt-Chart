@@ -19,7 +19,8 @@ var d = sendWebhookData(value, app).then(result => {
         data: [{
             name: data[0].field_9,
             id: data[0].id,
-            Owner: data[0].field_34_raw[0].identifier
+            Owner: data[0].field_34_raw[0].identifier,
+            Status: data[0].field_44
         }]
     };
     testseries2.push(projectdata2);
@@ -87,7 +88,6 @@ function createGantt(data, d) {
                                     console.log(filteredPoint);
                                     console.log(chart.get(filteredPoint.id));
                                     chart.get(filteredPoint.id).remove();
-                                    chart.redraw();
                                 }
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
                                 // newData.push(null) //--- extra null as a workaround for bug
