@@ -98,9 +98,9 @@ function createGantt(data, d) {
 
                         } else if (j == 1) {
                             console.log(chart.series);
-                            chart.series[0].data.update({
-                                data: data
-                            }, true, true)
+                            chart.update({
+                                series: data
+                            })
                             j = 0;
                         }
                     }
