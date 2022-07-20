@@ -85,6 +85,7 @@ function createGantt(data, d) {
                                 }
                                 else {
                                     console.log(filteredPoint);
+                                    console.log(chart.get(filteredPoint.id));
                                 }
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
                                 // newData.push(null) //--- extra null as a workaround for bug
