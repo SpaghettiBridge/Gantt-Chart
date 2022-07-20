@@ -196,6 +196,8 @@ function createGantt(data, d) {
         let input = "complete",
             points = chart.series[0].data,
             filteredPoint = points.filter(point => point.Status == input);
+        console.log(chart.series[0].data[0].id);
+        console.log(filteredPoint.id);
         chart.get(filteredPoint.id).remove();
     })
 }
