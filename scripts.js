@@ -1,7 +1,10 @@
 const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
 });
-
+let select = document.getElementById("select"),
+    removeById = document.getElementById("remove");
+console.log(select);
+console.log(removeById);
 let value = params.key;
 let app = params.app;
 
