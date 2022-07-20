@@ -7,9 +7,7 @@ console.log(select);
 console.log(removeById);
 let value = params.key;
 let app = params.app;
-removeById.addEventListener("click", function () {
-    chart.get(chart.series[0].data[0]).remove();
-})
+
 
 
 console.log(app);
@@ -195,7 +193,9 @@ function createGantt(data, d) {
         }
     });
 }
-
+removeById.addEventListener("click", function () {
+    chart.get(chart.series[0].data[0]).remove();
+})
 function filterFunction() {
     console.log(document.getElementById('myInput').value)
     let input = document.getElementById('myInput'),
