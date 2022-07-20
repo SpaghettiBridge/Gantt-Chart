@@ -87,7 +87,7 @@ function createGantt(data, d) {
                                     console.log(filteredPoint);
                                     console.log(chart.get(filteredPoint.id));
                                     chart.get(filteredPoint.id).remove();
-                                    chart["uniqueID"].redraw();
+                                    chart.redraw();
                                 }
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
                                 // newData.push(null) //--- extra null as a workaround for bug
