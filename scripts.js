@@ -70,7 +70,7 @@ function createGantt(data, d) {
                     text: 'Active',
                     onclick: function () {
 
-                        console.log(chart);
+                        console.log(chart.series.data);
                         let input = "active",
                             points = chart.series[0].points,
                             filteredPoint = points.filter(point => point.Status !== input);
