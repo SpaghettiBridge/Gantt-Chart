@@ -101,7 +101,6 @@ function createGantt(data, d) {
                             chart.series[0].update({
                                 data: data
                             }, true, true)
-                            chart.redraw()
                             j = 0;
                         }
                     }
