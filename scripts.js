@@ -193,7 +193,10 @@ function createGantt(data, d) {
         }
     });
     removeById.addEventListener("click", function () {
-        chart.get(chart.series[0].data[0].id).remove();
+        let input = "complete",
+            points = chart.series[0].data,
+            filteredPoint = points.filter(point => point.Status == input);
+        chart.get(filteredPoint.id).remove();
     })
 }
 
