@@ -98,9 +98,9 @@ function createGantt(data, d) {
 
                         } else if (j == 1) {
                             console.log("Reset to all tasks");
-                            // chart.series[0].update({
-                            //     data: data
-                            // })
+                            chart.series[0].update({
+                                data: data
+                            })
                             j = 0;
                         }
                     }
