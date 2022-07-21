@@ -7,8 +7,8 @@ let app = params.app;
 
 
 
-console.log(app);
-console.log(value);
+// console.log(app);
+// console.log(value);
 var d = sendWebhookData(value, app).then(result => {
 
     data = JSON.parse(result)
@@ -52,8 +52,8 @@ var d = sendWebhookData(value, app).then(result => {
     createGantt(testseries2);
     return testseries2;
 })
-
-function createGantt(data, d) {
+console.log(d);
+function createGantt(data) {
     var
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
@@ -70,13 +70,13 @@ function createGantt(data, d) {
                 printButton: {
                     text: 'Active',
                     onclick: function () {
-                        console.log(chart.series[0].data);
+                        // console.log(chart.series[0].data);
                         let input = "complete",
                             points = chart.series[0].data,
                             filteredPoint = points.filter(point => point.Status == input);
                         if (j == 0) {
                             if (filteredPoint.length) {
-                                console.log("filtering by active");
+                                // console.log("filtering by active");
                                 if (filteredPoint.length > 1) {
                                     filteredPoint.forEach(task => {
                                         console.log(task);
@@ -84,8 +84,8 @@ function createGantt(data, d) {
                                     })
                                 }
                                 else {
-                                    console.log(filteredPoint);
-                                    console.log(chart.get(filteredPoint.id));
+                                    // console.log(filteredPoint);
+                                    // console.log(chart.get(filteredPoint.id));
                                     chart.get(filteredPoint[0].id).remove();
                                 }
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
@@ -94,7 +94,7 @@ function createGantt(data, d) {
                             }
 
                         } else if (j == 1) {
-                            console.log(chart.series);
+                            console.log(data);
                             chart.update({
                                 series: data
                             })
