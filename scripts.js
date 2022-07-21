@@ -54,10 +54,13 @@ async function getData() {
         return testseries2;
     })
 }
-await getData().then(data => {
-    console.log(data);
-    createGantt(data);
-})
+async function createchart() {
+    await getData().then(data => {
+        console.log(data);
+        createGantt(data);
+    })
+}
+
 
 function createGantt(data) {
     var
