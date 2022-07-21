@@ -10,6 +10,7 @@ let app = params.app;
 // console.log(app);
 // console.log(value);
 async function getData() {
+    var data = [];
     sendWebhookData(value, app).then(result => {
 
         data = JSON.parse(result)
@@ -53,6 +54,8 @@ async function getData() {
 
         return testseries2;
     })
+    data = testseries2;
+    return data;
 }
 async function createchart() {
     await getData().then(data => {
