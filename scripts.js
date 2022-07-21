@@ -62,6 +62,7 @@ async function getData() {
     createGantt(getData);
 }
 
+getData();
 
 
 
