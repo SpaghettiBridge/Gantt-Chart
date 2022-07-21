@@ -54,7 +54,7 @@ async function getData() {
         return testseries2;
     })
 }
-getData().then(data => {
+await getData().then(data => {
     console.log(data);
     createGantt(data);
 })
