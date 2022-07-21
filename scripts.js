@@ -54,7 +54,7 @@ async function getData() {
 
         return testseries2;
     })
-    data = testseries2;
+    data = await sendWebhookData();
     return data;
 }
 async function createchart() {
