@@ -10,9 +10,9 @@ let app = params.app;
 // console.log(app);
 // console.log(value);
 
-var getData = sendWebhookData(value, app).then(result => {
+var gData = sendWebhookData(value, app).then(result => {
 
-    data = JSON.parse(result)
+    var data = JSON.parse(result)
     // console.log(data);
     var testseries2 = [];
     var projectdata2 = {
@@ -54,9 +54,15 @@ var getData = sendWebhookData(value, app).then(result => {
     return testseries2;
 })
 
+async function getData() {
+    let d = await getData();
+    console.log(d.body);
+    const data = await d.json();  //await resolves the promise and returns data
+    console.log(data);
+    createGantt(getData);
+}
 
-console.log(getData.result);
-createGantt(getData);
+
 
 
 function createGantt(data) {
