@@ -60,7 +60,7 @@ async function createchart() {
         createGantt(data);
     })
 }
-
+createchart();
 
 function createGantt(data) {
     var
