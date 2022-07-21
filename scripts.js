@@ -55,7 +55,7 @@ var getData = sendWebhookData(value, app).then(result => {
 })
 
 
-console.log(getData);
+console.log(getData.result);
 createGantt(getData);
 
 
