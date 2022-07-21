@@ -55,7 +55,7 @@ var gData = sendWebhookData(value, app).then(result => {
 })
 
 async function getData() {
-    let d = await getData();
+    let d = await gData();
     console.log(d.body);
     const data = await d.json();  //await resolves the promise and returns data
     console.log(data);
