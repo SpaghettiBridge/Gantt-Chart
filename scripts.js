@@ -9,61 +9,55 @@ let app = params.app;
 
 // console.log(app);
 // console.log(value);
-async function getData() {
-    var data = [];
-    sendWebhookData(value, app).then(result => {
 
-        data = JSON.parse(result)
-        // console.log(data);
-        var testseries2 = [];
-        var projectdata2 = {
+var getData = sendWebhookData(value, app).then(result => {
+
+    data = JSON.parse(result)
+    // console.log(data);
+    var testseries2 = [];
+    var projectdata2 = {
+        name: data[0].field_9,
+        data: [{
             name: data[0].field_9,
-            data: [{
-                name: data[0].field_9,
-                id: data[0].id,
-                Owner: data[0].field_34_raw[0].identifier,
-                Status: data[0].field_44
-            }]
-        };
-        testseries2.push(projectdata2);
+            id: data[0].id,
+            Owner: data[0].field_34_raw[0].identifier,
+            Status: data[0].field_44
+        }]
+    };
+    testseries2.push(projectdata2);
 
-        data[0].Milestones.forEach(stone => {
-            testseries2.forEach(projec => {
+    data[0].Milestones.forEach(stone => {
+        testseries2.forEach(projec => {
 
-                if (stone.parent == projec.data[0].id) {
-                    projec.data.push(stone);
-                }
-            });
-        })
-
-        data[0].Tasks.forEach(task => {
-            testseries2[0].data.push(task);
-        })
-
-        function compare(a, b) {
-            if (a.start < b.start) {
-                return -1;
+            if (stone.parent == projec.data[0].id) {
+                projec.data.push(stone);
             }
-            if (a.start > b.start) {
-                return 1;
-            }
-            return 0;
+        });
+    })
+
+    data[0].Tasks.forEach(task => {
+        testseries2[0].data.push(task);
+    })
+
+    function compare(a, b) {
+        if (a.start < b.start) {
+            return -1;
         }
-        console.log(testseries2);
-        testseries2[0].data.sort(compare);
+        if (a.start > b.start) {
+            return 1;
+        }
+        return 0;
+    }
+    console.log(testseries2);
+    testseries2[0].data.sort(compare);
 
-        return testseries2;
-    })
-    data = await sendWebhookData();
-    return data;
-}
-async function createchart() {
-    await getData().then(data => {
-        console.log(data);
-        createGantt(data);
-    })
-}
-createchart();
+    return testseries2;
+})
+
+
+console.log(getData);
+createGantt(getData);
+
 
 function createGantt(data) {
     var
