@@ -210,7 +210,7 @@ function createGantt(data) {
 function sendWebhookData(project, app) {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: 'https://n8n.quay-tech.co.uk/webhook-test/365f15ec-1cd9-4b80-9bac-ad7810f623a9',
+            url: 'https://hook.integromat.com/ucj3s2a4ryghge2o3v9utlq81tudedp9',
             type: 'POST',
             data: {
                 project: project,
