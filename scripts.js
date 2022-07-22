@@ -5,7 +5,15 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 let value = params.key;
 let app = params.app;
 
-
+function compare(a, b) {
+    if (a.start < b.start) {
+        return -1;
+    }
+    if (a.start > b.start) {
+        return 1;
+    }
+    return 0;
+}
 
 // console.log(app);
 // console.log(value);
@@ -39,15 +47,7 @@ var gData = sendWebhookData(value, app).then(result => {
         testseries2[0].data.push(task);
     })
 
-    function compare(a, b) {
-        if (a.start < b.start) {
-            return -1;
-        }
-        if (a.start > b.start) {
-            return 1;
-        }
-        return 0;
-    }
+
     console.log(testseries2);
     testseries2[0].data.sort(compare);
 
@@ -108,6 +108,7 @@ function createGantt(data) {
                         } else if (j == 1) {
                             console.log(data);
                             console.log(sortedData);
+                            sortedData[0].data.sort(compare);
                             chart.update({
                                 series: sortedData
                             })
