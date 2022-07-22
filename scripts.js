@@ -65,6 +65,7 @@ getData();
 
 
 function createGantt(data) {
+    var sortedData = data
     var
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
@@ -106,8 +107,9 @@ function createGantt(data) {
 
                         } else if (j == 1) {
                             console.log(data);
+                            console.log(sortedData);
                             chart.update({
-                                series: data
+                                series: sortedData
                             })
                             j = 0;
                         }
