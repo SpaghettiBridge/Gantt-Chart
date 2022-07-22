@@ -112,6 +112,7 @@ function createGantt(data) {
                             chart.update({
                                 series: sortedData
                             })
+                            chart.redraw();
                             j = 0;
                         }
                     }
