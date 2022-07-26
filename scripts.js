@@ -24,17 +24,17 @@ var gData = sendWebhookData(value, app).then(result => {
     // console.log(data);
     var testseries2 = [];
     var projectdata2 = {
-        name: GanttData.data[0].Name,
+        name: data.GanttData[0].Name,
         data: [{
-            name: GanttData.data[0].Name,
-            id: GanttData.data[0].id,
-            Owner: GanttData.data[0].ProjectManager_raw[0].identifier,
-            Status: GanttData.data[0].Status
+            name: data.GanttData[0].Name,
+            id: data.GanttData[0].id,
+            Owner: data.GanttData[0].ProjectManager_raw[0].identifier,
+            Status: data.GanttData[0].Status
         }]
     };
     testseries2.push(projectdata2);
 
-    GanttData.data[2].milestones.forEach(stone => {
+    data.GanttData[2].milestones.forEach(stone => {
         testseries2.forEach(projec => {
 
             if (stone.parent == projec.data[0].id) {
@@ -43,7 +43,7 @@ var gData = sendWebhookData(value, app).then(result => {
         });
     })
 
-    GanttData.data[1].Actions.forEach(task => {
+    data.GanttData[1].Actions.forEach(task => {
         testseries2[0].data.push(task);
     })
 
