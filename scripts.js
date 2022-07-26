@@ -19,7 +19,7 @@ function compare(a, b) {
 // console.log(value);
 
 var gData = sendWebhookData(value, app).then(result => {
-
+    console.log(result);
     var data = JSON.parse(result)
     // console.log(data);
     var testseries2 = [];
