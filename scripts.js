@@ -24,17 +24,17 @@ var gData = sendWebhookData(value, app).then(result => {
     // console.log(data);
     var testseries2 = [];
     var projectdata2 = {
-        name: data[0].field_9,
+        name: data[0].Name,
         data: [{
-            name: data[0].field_9,
+            name: data[0].Name,
             id: data[0].id,
-            Owner: data[0].field_34_raw[0].identifier,
-            Status: data[0].field_44
+            Owner: data[0].ProjectManager_raw[0].identifier,
+            Status: data[0].Status
         }]
     };
     testseries2.push(projectdata2);
 
-    data[0].Milestones.forEach(stone => {
+    data[2].milestones.forEach(stone => {
         testseries2.forEach(projec => {
 
             if (stone.parent == projec.data[0].id) {
@@ -43,7 +43,7 @@ var gData = sendWebhookData(value, app).then(result => {
         });
     })
 
-    data[0].Tasks.forEach(task => {
+    data[1].Actions.forEach(task => {
         testseries2[0].data.push(task);
     })
 
