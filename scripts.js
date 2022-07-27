@@ -82,7 +82,7 @@ function createGantt(data) {
                 printButton: {
                     text: 'Active',
                     onclick: function () {
-                        // console.log(chart.series[0].data);
+                        console.log(chart.series[0].data);
                         let input = "complete",
                             points = chart.series[0].data,
                             filteredPoint = points.filter(point => point.Status == input);
@@ -106,8 +106,8 @@ function createGantt(data) {
                             }
 
                         } else if (j == 1) {
-                            console.log(data);
-                            console.log(sortedData);
+                            // console.log(data);
+                            // console.log(sortedData);
                             sortedData[0].data.sort(compare);
                             chart.update({
                                 series: sortedData
