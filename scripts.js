@@ -130,6 +130,7 @@ function createGantt(data) {
                     amount = isObject(completed) ? completed.amount : completed,
                     status = point.Status,
                     lines;
+                console.log(point);
 
                 lines = [{
                     value: point.name,
