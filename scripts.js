@@ -128,7 +128,7 @@ function createGantt(data) {
                     options = point.options,
                     completed = options.completed,
                     amount = isObject(completed) ? completed.amount : completed,
-                    status = ((amount || 0) * 100) + '%',
+                    status = point.Status,
                     lines;
 
                 lines = [{
@@ -143,7 +143,7 @@ function createGantt(data) {
                     value: dateFormat(format, point.end)
                 }, {
                     title: 'Status',
-                    value: point.Status
+                    value: status
                 }, {
                     title: 'Owner',
                     value: options.owner || 'unassigned'
