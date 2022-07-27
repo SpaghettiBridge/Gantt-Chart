@@ -66,6 +66,8 @@ getData();
 
 function createGantt(data) {
     var sortedData = data
+    console.log(sortedData);
+    console.log(data);
     var
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
