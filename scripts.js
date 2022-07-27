@@ -143,7 +143,7 @@ function createGantt(data) {
                     value: dateFormat(format, point.end)
                 }, {
                     title: 'Status',
-                    value: status
+                    value: "test"
                 }, {
                     title: 'Owner',
                     value: options.owner || 'unassigned'
