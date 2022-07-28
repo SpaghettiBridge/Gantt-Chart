@@ -97,15 +97,17 @@ function createGantt(data) {
                                         // console.log(task);
                                         chart.get(task.id).remove();
                                     })
+                                    j = 1;
                                 }
                                 else {
                                     // console.log(filteredPoint);
                                     // console.log(chart.get(filteredPoint.id));
                                     chart.get(filteredPoint[0].id).remove();
+                                    j = 1;
                                 }
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
                                 // newData.push(null) //--- extra null as a workaround for bug
-                                j = 1;
+
                             }
 
                         } else if (j == 1) {
