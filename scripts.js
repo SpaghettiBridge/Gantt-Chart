@@ -93,17 +93,19 @@ function createGantt(data) {
                             if (filteredPoint.length) {
                                 // console.log("filtering by active");
                                 if (filteredPoint.length > 1) {
+                                    j = 1;
                                     filteredPoint.forEach(task => {
                                         // console.log(task);
                                         chart.get(task.id).remove();
                                     })
-                                    j = 1;
+
                                 }
                                 else {
+                                    j = 1;
                                     // console.log(filteredPoint);
                                     // console.log(chart.get(filteredPoint.id));
                                     chart.get(filteredPoint[0].id).remove();
-                                    j = 1;
+
                                 }
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
                                 // newData.push(null) //--- extra null as a workaround for bug
