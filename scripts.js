@@ -87,7 +87,8 @@ function createGantt(data) {
                         console.log(chart.series[0].data);
                         let input = "complete",
                             points = chart.series[0].data,
-                            filteredPoint = points.filter(point => point.Status == input);
+
+                            filteredPoint = points.filter(point => point.status == input);
                         if (j == 0) {
                             if (filteredPoint.length) {
                                 // console.log("filtering by active");
