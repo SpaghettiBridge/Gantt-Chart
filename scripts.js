@@ -96,7 +96,7 @@ function createGantt(data) {
                                     j = 1;
                                     filteredPoint.forEach(task => {
                                         // console.log(task);
-                                        chart.get(task.id).remove();
+                                        chart.get(task.id).hide();
                                     })
 
                                 }
@@ -104,7 +104,7 @@ function createGantt(data) {
                                     j = 1;
                                     // console.log(filteredPoint);
                                     // console.log(chart.get(filteredPoint.id));
-                                    chart.get(filteredPoint[0].id).remove();
+                                    chart.get(filteredPoint[0].id).hide();
 
                                 }
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
