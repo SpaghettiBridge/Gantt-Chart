@@ -73,6 +73,7 @@ function createGantt(data) {
         defined = Highcharts.defined,
         isObject = Highcharts.isObject;
     var j = 0;
+    var hiddenPoints = [];
 
     let chart = Highcharts.ganttChart("uniqueID", {
         series: data,
@@ -96,15 +97,18 @@ function createGantt(data) {
                                     j = 1;
                                     filteredPoint.forEach(task => {
                                         // console.log(task);
-                                        chart.get(task.id).hide();
+                                        chart.get(task.id).setVisible(false, false);
+                                        hiddenPoints.push(task.id);
                                     })
-
+                                    chart.redraw()
                                 }
+
                                 else {
                                     j = 1;
                                     // console.log(filteredPoint);
                                     // console.log(chart.get(filteredPoint.id));
-                                    chart.get(filteredPoint[0].id).hide();
+                                    hiddenPoints.push(filteredPoint[0].id);
+                                    chart.get(filteredPoint[0].id).setVisible(false, true);
 
                                 }
                                 // newData[filteredPoint[0].index] = filteredPoint[0].y
@@ -115,11 +119,24 @@ function createGantt(data) {
                         } else if (j == 1) {
                             // console.log(data);
                             // console.log(sortedData);
-                            // sortedData[0].data.sort(compare);
-                            // chart.update({
-                            //     series: sortedData
-                            // })
-                            // chart.redraw();
+                            if (hiddenPoints.length > 1) {
+                                j = 0;
+                                hiddenPoints.forEach(task => {
+                                    // console.log(task);
+                                    chart.get(task.id).setVisible(true, false);
+                                    hiddenPoints.pop(task.id);
+                                })
+                                chart.redraw()
+                            }
+
+                            else {
+                                j = 0;
+                                // console.log(filteredPoint);
+                                // console.log(chart.get(filteredPoint.id));
+
+                                chart.get(hiddenPoints[0].id).setVisible(true, true);
+                                hiddenPoints.pop();
+                            }
                             j = 0;
                             window.location.reload(true);
                         }
