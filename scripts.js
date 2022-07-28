@@ -111,12 +111,13 @@ function createGantt(data) {
                         } else if (j == 1) {
                             // console.log(data);
                             // console.log(sortedData);
-                            sortedData[0].data.sort(compare);
-                            chart.update({
-                                series: sortedData
-                            })
-                            chart.redraw();
+                            // sortedData[0].data.sort(compare);
+                            // chart.update({
+                            //     series: sortedData
+                            // })
+                            // chart.redraw();
                             j = 0;
+                            window.location.reload(true);
                         }
                     }
                 }
