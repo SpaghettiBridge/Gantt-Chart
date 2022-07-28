@@ -137,8 +137,6 @@ function createGantt(data) {
                                 chart.get(hiddenPoints[0].id).setVisible(true, true);
                                 hiddenPoints.pop();
                             }
-                            j = 0;
-                            window.location.reload(true);
                         }
                     }
                 }
