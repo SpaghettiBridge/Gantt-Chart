@@ -65,7 +65,7 @@ getData();
 
 
 function createGantt(data) {
-    chart.showLoading();
+
     var
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
@@ -202,7 +202,7 @@ function createGantt(data) {
             }
         }
     });
-    chart.hideLoading();
+
 }
 
 function sendWebhookData(project, app) {
