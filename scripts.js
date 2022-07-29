@@ -69,7 +69,10 @@ function createGantt(data) {
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
         sortedData = data,
-        activeOnly = [],
+        activeOnly = [{
+            name: data.GanttData[0].Name,
+            data: []
+        }],
         isObject = Highcharts.isObject,
         j = 0;
 
@@ -78,7 +81,7 @@ function createGantt(data) {
     sortedData[0].data.forEach(point => {
         if (point.status !== "complete") {
             /* console.log(point); */
-            activeOnly.push(point);
+            activeOnly.data.push(point);
             i = i + 1;
         } else { i = i + 1; }
     })
@@ -99,11 +102,6 @@ function createGantt(data) {
                             chart.update({
                                 series: {
                                     data: activeOnly,
-                                    animation: {
-                                        duration: 2000,
-                                        // Uses Math.easeOutBounce
-                                        easing: 'easeOutBounce'
-                                    }
                                 }
                             });
                             j = 1
@@ -111,11 +109,6 @@ function createGantt(data) {
                             chart.update({
                                 series: {
                                     data: sortedData,
-                                    animation: {
-                                        duration: 2000,
-                                        // Uses Math.easeOutBounce
-                                        easing: 'easeOutBounce'
-                                    }
                                 }
                             });
                             j = 0;
