@@ -191,7 +191,7 @@ function createGantt(data) {
         }
     });
     let activeChart = Highcharts.ganttChart("Actives", {
-        series: sortedData,
+        series: activeOnly,
         exporting: {
             buttons: {
                 contextButton: {
