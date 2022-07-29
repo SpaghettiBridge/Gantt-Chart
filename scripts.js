@@ -69,13 +69,12 @@ function createGantt(data) {
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
         sortedData = data,
-        activeOnly = [{
-            name: sortedData.Name,
-            data: []
-        }],
         isObject = Highcharts.isObject,
         j = 0;
-
+    var activeOnly = [{
+        name: sortedData.Name,
+        data: []
+    }]
     /* console.log(myData.data.length) */
     var i = 1;
     sortedData[0].data.forEach(point => {
