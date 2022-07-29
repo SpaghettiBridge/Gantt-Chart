@@ -100,13 +100,14 @@ function createGantt(data) {
                                     data: activeOnly
                                 }
                             });
-
+                            j = 1
                         } else if (j == 1) {
                             chart.update({
                                 series: {
                                     data: sortedData
                                 }
                             });
+                            j = 0;
                         }
                     }
                 }
