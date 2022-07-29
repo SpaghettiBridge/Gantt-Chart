@@ -74,8 +74,7 @@ function createGantt(data) {
     var activeOnly = [{
         name: sortedData.Name,
         data: []
-    }]
-    /* console.log(myData.data.length) */
+    }];
     var i = 1;
     sortedData[0].data.forEach(point => {
         if (point.status !== "complete") {
