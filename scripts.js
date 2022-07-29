@@ -101,14 +101,14 @@ function createGantt(data) {
                         if (j == 0) {
                             chart.update({
                                 series: {
-                                    data: activeOnly[0].data,
+                                    data: activeOnly,
                                 }
                             });
                             j = 1
                         } else if (j == 1) {
                             chart.update({
                                 series: {
-                                    data: sortedData[0].data,
+                                    data: data,
                                 }
                             });
                             j = 0;
