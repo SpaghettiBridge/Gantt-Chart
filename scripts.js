@@ -103,14 +103,14 @@ function createGantt(data) {
                                 series: {
                                     data: activeOnly,
                                 }
-                            });
+                            }, true);
                             j = 1
                         } else if (j == 1) {
                             chart.update({
                                 series: {
                                     data: data,
                                 }
-                            });
+                            }, true);
                             j = 0;
                         }
                     }
