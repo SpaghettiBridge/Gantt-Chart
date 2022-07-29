@@ -109,7 +109,8 @@ function createGantt(data) {
                                 series: {
                                     data: sortedData[0].data,
                                 }
-                            });
+                            }, false);
+                            chart.redraw();
                             j = 0;
                         }
                     }
