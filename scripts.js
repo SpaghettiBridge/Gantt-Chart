@@ -81,7 +81,7 @@ function createGantt(data) {
     sortedData[0].data.forEach(point => {
         if (point.status !== "complete") {
             /* console.log(point); */
-            activeOnly.data.push(point);
+            activeOnly[0].data.push(point);
             i = i + 1;
         } else { i = i + 1; }
     })
