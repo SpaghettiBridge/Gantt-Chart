@@ -98,21 +98,8 @@ function createGantt(data) {
                     text: 'Active',
                     onclick: function () {
                         // if (j == 0) {
-                        console.log(chart.series)
-                        chart.series[0].update({
+                        console.log("I'm the non active chart")
 
-                            data: activeOnly[0].data
-
-                        });
-                        // j = 1
-                        // } else if (j == 1) {
-                        //     chart.update({
-                        //         series: {
-                        //             data: sortedData[0].data,
-                        //         }
-                        //     }, true, true);
-                        //     j = 0;
-                        // }
                     }
                 }
             }
@@ -203,7 +190,109 @@ function createGantt(data) {
             }
         }
     });
+    let activeChart = Highcharts.ganttChart("Actives", {
+        series: sortedData,
+        exporting: {
+            buttons: {
+                contextButton: {
+                    menuItems: ["printChart", "separator", "downloadPNG", "downloadJPEG", "downloadPDF", "downloadSVG"]
+                },
+                printButton: {
+                    text: 'Active',
+                    onclick: function () {
+                        // if (j == 0) {
+                        console.log("I'm the active Chart")
 
+                    }
+                }
+            }
+        },
+        tooltip: {
+            pointFormatter: function () {
+                var point = this,
+                    format = '%e. %b',
+                    options = point.options,
+                    completed = options.completed,
+                    amount = isObject(completed) ? completed.amount : completed,
+                    status = point.status,
+                    lines;
+                // console.log(point);
+
+                lines = [{
+                    value: point.name,
+                    style: 'font-weight: bold;'
+                }, {
+                    title: 'Start',
+                    value: dateFormat(format, point.start)
+                }, {
+                    visible: !options.milestone,
+                    title: 'End',
+                    value: dateFormat(format, point.end)
+                }, {
+                    title: 'Status',
+                    value: status
+                }, {
+                    title: 'Owner',
+                    value: options.owner || 'unassigned'
+                }];
+
+                return lines.reduce(function (str, line) {
+                    var s = '',
+                        style = (
+                            defined(line.style) ? line.style : 'font-size: 0.8em;'
+                        );
+                    if (line.visible !== false) {
+                        s = (
+                            '<span style="' + style + '">' +
+                            (defined(line.title) ? line.title + ': ' : '') +
+                            (defined(line.value) ? line.value : '') +
+                            '</span><br/>'
+                        );
+                    }
+                    return str + s;
+                }, '');
+            }
+        },
+
+        xAxis: {
+            currentDateIndicator: true,
+            // min: new Date(oldDate),
+            // max: new Date(newDate),
+        },
+        accessibility: {
+            keyboardNavigation: {
+                seriesNavigation: {
+                    mode: 'serialize'
+                }
+            },
+            point: {
+                descriptionFormatter: function (point) {
+                    var completedValue = point.completed ?
+                        point.completed.amount || point.completed : null,
+                        completed = completedValue ?
+                            ' Task ' + Math.round(completedValue * 1000) / 10 + '% completed.' :
+                            '',
+                        dependency = point.dependency &&
+                            point.series.activeChart.get(point.dependency).name,
+                        dependsOn = dependency ? ' Depends on ' + dependency + '.' : '';
+
+                    return Highcharts.format(
+                        point.milestone ?
+                            '{point.yCategory}. Milestone at {point.x:%Y-%m-%d}. Owner: {point.owner}.{dependsOn}' :
+                            '{point.yCategory}.{completed} Start {point.x:%Y-%m-%d}, end {point.x2:%Y-%m-%d}. Owner: {point.owner}.{dependsOn}',
+                        { point, completed, dependsOn }
+                    );
+                }
+            }
+        },
+        lang: {
+            accessibility: {
+                axis: {
+                    xAxisDescriptionPlural: 'The chart has a two-part X axis showing time in both week numbers and days.'
+                }
+            }
+        }
+    });
 }
 
 function sendWebhookData(project, app) {
