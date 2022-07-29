@@ -97,14 +97,24 @@ function createGantt(data) {
                         if (j == 0) {
                             chart.update({
                                 series: {
-                                    data: activeOnly
+                                    data: activeOnly,
+                                    animation: {
+                                        duration: 2000,
+                                        // Uses Math.easeOutBounce
+                                        easing: 'easeOutBounce'
+                                    }
                                 }
                             });
                             j = 1
                         } else if (j == 1) {
                             chart.update({
                                 series: {
-                                    data: sortedData
+                                    data: sortedData,
+                                    animation: {
+                                        duration: 2000,
+                                        // Uses Math.easeOutBounce
+                                        easing: 'easeOutBounce'
+                                    }
                                 }
                             });
                             j = 0;
