@@ -97,21 +97,21 @@ function createGantt(data) {
                 printButton: {
                     text: 'Active',
                     onclick: function () {
-                        if (j == 0) {
-                            chart.update({
-                                series: {
-                                    data: activeOnly[0].data,
-                                }
-                            }, true, true);
-                            j = 1
-                        } else if (j == 1) {
-                            chart.update({
-                                series: {
-                                    data: sortedData[0].data,
-                                }
-                            }, true, true);
-                            j = 0;
-                        }
+                        // if (j == 0) {
+                        chart.update({
+                            series: {
+                                data: activeOnly[0].data,
+                            }
+                        }, true, true);
+                        // j = 1
+                        // } else if (j == 1) {
+                        //     chart.update({
+                        //         series: {
+                        //             data: sortedData[0].data,
+                        //         }
+                        //     }, true, true);
+                        //     j = 0;
+                        // }
                     }
                 }
             }
