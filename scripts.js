@@ -65,15 +65,24 @@ getData();
 
 
 function createGantt(data) {
-    var sortedData = data
-    console.log(sortedData);
-    console.log(data);
     var
         dateFormat = Highcharts.dateFormat,
         defined = Highcharts.defined,
-        isObject = Highcharts.isObject;
-    var j = 0;
-    var hiddenPoints = [];
+        sortedData = data,
+        activeOnly = [],
+        isObject = Highcharts.isObject,
+        j = 0;
+
+    /* console.log(myData.data.length) */
+    var i = 1;
+    sortedData[0].data.forEach(point => {
+        if (point.status !== "complete") {
+            /* console.log(point); */
+            activeOnly.push(point);
+            i = i + 1;
+        } else { i = i + 1; }
+
+    })
 
     let chart = Highcharts.ganttChart("uniqueID", {
         series: data,
@@ -85,58 +94,19 @@ function createGantt(data) {
                 printButton: {
                     text: 'Active',
                     onclick: function () {
-                        console.log(chart.series[0].data);
-                        let input = "complete",
-                            points = chart.series[0].data,
-
-                            filteredPoint = points.filter(point => point.status == input);
                         if (j == 0) {
-                            if (filteredPoint.length) {
-                                // console.log("filtering by active");
-                                if (filteredPoint.length > 1) {
-                                    j = 1;
-                                    filteredPoint.forEach(task => {
-                                        // console.log(task);
-                                        chart.get(task.id).setVisible(false, false);
-                                        hiddenPoints.push(task.id);
-                                    })
-                                    chart.redraw()
+                            chart.update({
+                                series: {
+                                    data: activeOnly
                                 }
-
-                                else {
-                                    j = 1;
-                                    // console.log(filteredPoint);
-                                    // console.log(chart.get(filteredPoint.id));
-                                    hiddenPoints.push(filteredPoint[0].id);
-                                    chart.get(filteredPoint[0].id).setVisible(false, true);
-
-                                }
-                                // newData[filteredPoint[0].index] = filteredPoint[0].y
-                                // newData.push(null) //--- extra null as a workaround for bug
-
-                            }
+                            });
 
                         } else if (j == 1) {
-                            // console.log(data);
-                            // console.log(sortedData);
-                            if (hiddenPoints.length > 1) {
-                                j = 0;
-                                hiddenPoints.forEach(task => {
-                                    // console.log(task);
-                                    chart.get(task.id).setVisible(true, false);
-                                    hiddenPoints.pop(task.id);
-                                })
-                                chart.redraw()
-                            }
-
-                            else {
-                                j = 0;
-                                // console.log(filteredPoint);
-                                // console.log(chart.get(filteredPoint.id));
-
-                                chart.get(hiddenPoints[0].id).setVisible(true, true);
-                                hiddenPoints.pop();
-                            }
+                            chart.update({
+                                series: {
+                                    data: sortedData
+                                }
+                            });
                         }
                     }
                 }
