@@ -99,7 +99,8 @@ function createGantt(data) {
                     onclick: function () {
                         // if (j == 0) {
                         console.log("I'm the non active chart")
-
+                        document.getElementById("uniqueID").setAttribute("style", "display:none;");
+                        document.getElementById("Actives").setAttribute("style", "display:block;");
                     }
                 }
             }
@@ -198,10 +199,12 @@ function createGantt(data) {
                     menuItems: ["printChart", "separator", "downloadPNG", "downloadJPEG", "downloadPDF", "downloadSVG"]
                 },
                 printButton: {
-                    text: 'Active',
+                    text: 'All',
                     onclick: function () {
                         // if (j == 0) {
                         console.log("I'm the active Chart")
+                        document.getElementById("uniqueID").setAttribute("style", "display:block;");
+                        document.getElementById("Actives").setAttribute("style", "display:none;");
 
                     }
                 }
