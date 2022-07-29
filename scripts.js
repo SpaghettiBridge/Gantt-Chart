@@ -100,7 +100,8 @@ function createGantt(data) {
                         // if (j == 0) {
                         chart.update({
                             series: {
-                                data: activeOnly
+                                data: activeOnly[0].data
+
                             }
                         });
                         // j = 1
