@@ -107,7 +107,7 @@ function createGantt(data) {
                         } else if (j == 1) {
                             chart.update({
                                 series: {
-                                    data: data,
+                                    data: sortedData[0].data,
                                 }
                             });
                             j = 0;
