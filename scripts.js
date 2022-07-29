@@ -70,7 +70,7 @@ function createGantt(data) {
         defined = Highcharts.defined,
         sortedData = data,
         activeOnly = [{
-            name: data.GanttData[0].Name,
+            name: sortedData[0].Name,
             data: []
         }],
         isObject = Highcharts.isObject,
