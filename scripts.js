@@ -102,15 +102,14 @@ function createGantt(data) {
                                 series: {
                                     data: activeOnly[0].data,
                                 }
-                            });
+                            }, true, true);
                             j = 1
                         } else if (j == 1) {
                             chart.update({
                                 series: {
                                     data: sortedData[0].data,
                                 }
-                            }, false);
-                            chart.redraw();
+                            }, true, true);
                             j = 0;
                         }
                     }
