@@ -48,7 +48,7 @@ var gData = sendWebhookData(value, app).then(result => {
     })
 
 
-    console.log(testseries2);
+    // console.log(testseries2);
     testseries2[0].data.sort(compare);
 
     return testseries2;
@@ -56,7 +56,7 @@ var gData = sendWebhookData(value, app).then(result => {
 
 async function getData() {
     let d = await gData;
-    console.log(d);
+    // console.log(d);
     createGantt(d);
 }
 
@@ -81,8 +81,9 @@ function createGantt(data) {
             activeOnly.push(point);
             i = i + 1;
         } else { i = i + 1; }
-
     })
+    console.log(sortedData);
+    console.log(activeOnly);
 
     let chart = Highcharts.ganttChart("uniqueID", {
         series: data,
@@ -132,7 +133,7 @@ function createGantt(data) {
                     amount = isObject(completed) ? completed.amount : completed,
                     status = point.status,
                     lines;
-                console.log(point);
+                // console.log(point);
 
                 lines = [{
                     value: point.name,
