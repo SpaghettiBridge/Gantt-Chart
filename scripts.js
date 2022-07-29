@@ -88,7 +88,7 @@ function createGantt(data) {
     console.log(activeOnly);
 
     let chart = Highcharts.ganttChart("uniqueID", {
-        series: activeOnly,
+        series: sortedData,
         exporting: {
             buttons: {
                 contextButton: {
