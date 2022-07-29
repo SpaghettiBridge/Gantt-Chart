@@ -98,11 +98,10 @@ function createGantt(data) {
                     text: 'Active',
                     onclick: function () {
                         // if (j == 0) {
-                        chart.update({
-                            series: {
-                                data: activeOnly[0].data
+                        chart.series[0].update({
 
-                            }
+                            data: activeOnly[0].data
+
                         });
                         // j = 1
                         // } else if (j == 1) {
