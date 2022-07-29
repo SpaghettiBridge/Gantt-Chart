@@ -199,7 +199,7 @@ function createGantt(data) {
                     menuItems: ["printChart", "separator", "downloadPNG", "downloadJPEG", "downloadPDF", "downloadSVG"]
                 },
                 printButton: {
-                    text: 'show All',
+                    text: 'Show All',
                     onclick: function () {
                         // if (j == 0) {
                         console.log("I'm the active Chart")
