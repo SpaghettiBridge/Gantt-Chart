@@ -72,7 +72,7 @@ function createGantt(data) {
         isObject = Highcharts.isObject,
         j = 0;
     var activeOnly = [{
-        name: sortedData[0].Name,
+        name: "Active Data",
         data: []
     }];
     var i = 1;
