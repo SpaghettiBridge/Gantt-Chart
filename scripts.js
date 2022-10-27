@@ -21,7 +21,6 @@ function compare(a, b) {
 var gData = sendWebhookData(value, app).then(result => {
     console.log(result);
     var data = result
-    console.log(data);
     var testseries2 = [];
     var projectdata2 = {
         name: data.GanttData[0].Name,
