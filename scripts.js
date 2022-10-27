@@ -42,13 +42,13 @@ var gData = sendWebhookData(value, app).then(result => {
 //         });
 //     })
 
-//     data.GanttData[1].Actions.forEach(task => {
-//         testseries2[0].data.push(task);
-//     })
+    data.GanttData[1].Actions.forEach(task => {
+        testseries2[0].data.push(task);
+    })
 
 
-//     // console.log(testseries2);
-//     testseries2[0].data.sort(compare);
+    console.log(testseries2);
+    testseries2[0].data.sort(compare);
 
     return testseries2;
 })
