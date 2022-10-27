@@ -33,22 +33,22 @@ var gData = sendWebhookData(value, app).then(result => {
     };
     testseries2.push(projectdata2);
 
-    data.GanttData[2].milestones.forEach(stone => {
-        testseries2.forEach(projec => {
+//     data.GanttData[2].milestones.forEach(stone => {
+//         testseries2.forEach(projec => {
 
-            if (stone.parent == projec.data[0].id) {
-                projec.data.push(stone);
-            }
-        });
-    })
+//             if (stone.parent == projec.data[0].id) {
+//                 projec.data.push(stone);
+//             }
+//         });
+//     })
 
-    data.GanttData[1].Actions.forEach(task => {
-        testseries2[0].data.push(task);
-    })
+//     data.GanttData[1].Actions.forEach(task => {
+//         testseries2[0].data.push(task);
+//     })
 
 
-    // console.log(testseries2);
-    testseries2[0].data.sort(compare);
+//     // console.log(testseries2);
+//     testseries2[0].data.sort(compare);
 
     return testseries2;
 })
